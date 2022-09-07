@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-flask-deployment-new
+  labels:
+    app: my-flask-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: suhas2311/my_flask:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
